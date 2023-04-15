@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Fucken Russian pigs must die
+          Pidarasy
         </a>
       </header>
     </div>
