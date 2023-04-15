@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { Button } from './Components/Button';
+import { useSelector, useDispatch } from 'react-redux'
+import { follow, unFollow } from './redux/followSlice'
+
 
 function App() {
+
+  const value = useSelector(state => state.follow.value)
+  const isFollow = useSelector(state => state.follow.isFollow)
+  const dispatch = useDispatch()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Pidarasy
-        </a>
-      </header>
+    <div className="card">
+      <p className='tweets'>777 TWEETS</p>
+      <p className='followers'>{value} FOLOWERS</p>
+      {isFollow ?
+        <Button className='btnF' onClick={() => dispatch(follow(1))}>FOLLOWING</Button> :
+        <Button onClick={() => dispatch(unFollow(1))}>FOLLOW</Button>
+      }
     </div>
   );
 }
