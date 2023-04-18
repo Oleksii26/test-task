@@ -5,11 +5,8 @@ const followSlice = createSlice({
     name: 'following',
     initialState: {
         users: [],
-        isFollow: false,
         isLoading: false,
         error: null
-    },
-    reducers: {
     },
     extraReducers: {
         [fetchUsers.pending](state) {
@@ -36,6 +33,7 @@ const followSlice = createSlice({
         [fetchFollow.rejected](state, action) {
             state.isLoading = false
             state.error = action.payload
+            state.users = false
         },
         [fetchUnFollow.pending](state, action) {
             state.isLoading = true

@@ -12,7 +12,6 @@ export const Tweets = () => {
     const [usersPurPages] = useState(9)
     const users = useSelector(state => state.follow.users)
 
-
     const pageNumbers = []
     for (let i = 1; i <= Math.ceil(users.length / usersPurPages); i++) {
         pageNumbers.push(i)
@@ -29,9 +28,10 @@ export const Tweets = () => {
 
     useEffect(() => {
         dispatch(fetchUsers())
+
     }, [dispatch])
 
-  
+
 
     return (<div className='box'>
         <Link to='*' className='link'>&#11013; Back</Link>
@@ -46,8 +46,8 @@ export const Tweets = () => {
                         <p className='tweets'>{user.tweets} TWEETS</p>
                         <p className='followers'>{user.followers} FOLLOWERS</p>
                         {user.follow ?
-                            <Button className='btnF' onClick={() => dispatch(fetchFollow(user))}>FOLLOWING</Button> :
-                            <Button onClick={() => dispatch(fetchUnFollow(user))} >FOLLOW</Button>
+                            <Button  className='btnF'  onClick={() => dispatch(fetchFollow(user))}>FOLLOWING</Button> :
+                            <Button  onClick={() => dispatch(fetchUnFollow(user))} >FOLLOW</Button>
                         }
                     </div>
                 </li>)}
