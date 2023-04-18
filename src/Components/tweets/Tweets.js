@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 export const Tweets = () => {
 
     const [currentPage, setCurrentPage] = useState(1)
-    const [usersPurPages] = useState(8)
+    const [usersPurPages] = useState(9)
     const users = useSelector(state => state.follow.users)
 
 
@@ -31,7 +31,7 @@ export const Tweets = () => {
         dispatch(fetchUsers())
     }, [dispatch]);
 
-    return (<div >
+    return (<div className='box'>
         <Link to='*' className='link'>&#11013; Back</Link>
         <div className='container'>
 

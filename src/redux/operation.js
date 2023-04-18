@@ -14,14 +14,11 @@ export const fetchUsers = createAsyncThunk('users/fetchAll',
         }
     }
 )
-// /?p=1&l=9
 
 
 export const fetchFollow = createAsyncThunk('users/fetchFollow',
     async (users, thunkAPI) => {
-        // const temp = {...users}
-        // temp.follow = !temp.follow
-        console.log(users);
+               console.log(users);
         try {
             const res = await axios.put(`/users/${users.id}`, { follow: !users.follow },)
             return res.data
