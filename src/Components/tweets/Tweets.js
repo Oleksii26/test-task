@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import './Tweets.css'
 import { Link } from 'react-router-dom';
 import { Loader } from '../../helpers/Spiner';
-import { fetchFollow, fetchUsers } from '../../redux/operation';
+import { fetchFollow, fetchUnFollow, fetchUsers } from '../../redux/operation';
 import { useEffect, useState } from 'react';
 
 export const Tweets = () => {
@@ -31,6 +31,8 @@ export const Tweets = () => {
         dispatch(fetchUsers())
     }, [dispatch])
 
+  
+
     return (<div className='box'>
         <Link to='*' className='link'>&#11013; Back</Link>
         <div className='container'>
@@ -42,10 +44,10 @@ export const Tweets = () => {
                         <img className='img' alt='img' src={user.avatar} />
                         <p className='name'>{user.user}</p>
                         <p className='tweets'>{user.tweets} TWEETS</p>
-                        <p className='followers'>{user.followers} FOLOWERS</p>
+                        <p className='followers'>{user.followers} FOLLOWERS</p>
                         {user.follow ?
-                            <Button className='btnF' onClick={() => dispatch(fetchFollow(user)) /* dispatch(fetchFollow) */}>FOLLOWING</Button> :
-                            <Button onClick={() => dispatch(fetchFollow(user))} >FOLLOW</Button>
+                            <Button className='btnF' onClick={() => dispatch(fetchFollow(user))}>FOLLOWING</Button> :
+                            <Button onClick={() => dispatch(fetchUnFollow(user))} >FOLLOW</Button>
                         }
                     </div>
                 </li>)}
