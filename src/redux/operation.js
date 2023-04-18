@@ -7,13 +7,14 @@ axios.defaults.baseURL = 'https://64393e791b9a7dd5c962b213.mockapi.io/users'
 export const fetchUsers = createAsyncThunk('users/fetchAll',
     async (_, thunkAPI) => {
         try {
-            const responce = await axios.get(`/users/?p=1&l=9`)
+            const responce = await axios.get(`/users`)
             return responce.data
         } catch (e) {
             return thunkAPI.rejectWithValue(e.message)
         }
     }
 )
+// /?p=1&l=9
 
 
 export const fetchFollow = createAsyncThunk('users/fetchFollow',

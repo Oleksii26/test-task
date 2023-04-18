@@ -120,3 +120,29 @@
     color: #373737;
     margin-bottom: 20px;
 }
+
+.listPagination {
+    list-style: none;
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.linkPagination {
+    text-decoration: none;
+    color: white;
+    padding: 8px 14px;
+}
+
+.itemPagination {
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #471CA9;
+    cursor: pointer;
+}
