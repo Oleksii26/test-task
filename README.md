@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+Критерії виконання
+● Верстка фіксована в рх, семантична та валідна.
+● Немає помилок в консолі браузера.
+● Робота виконана на нативному JS з використанням зборщиків або на React.
+● Інтерактивність працює відповідно до технічного завдання.
+● Код відформатований та без коментарів.
+● В репозиторії має бути описаний README.md. Коротка стаття, з
+рекомендаціями щодо оформлення..
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Технічне завдання
+1. Відповідно до макету потрібно реалізувати картки юзера.
+2. При клікові на кнопку Follow - текст змінюється на Following. Також
+змінюється колір кнопки. А до кількості фоловерів додається і ваш. Тобто,
 
-## Available Scripts
+початкова кількість складає 100,500 фоловерів. При клікові на кнопку буде
+100,501.
+3. При оновлені сторінки має фіксуватись кінцевий результат дій юзера. Тобто,
+якщо клікнути по кнопці і оновити сторінку - то кнопка все рівно залишається
+в стані Following із відповідним кольором, а кількість фоловерів НЕ
+зменшується до початкового значення.
+4. При повторному клікові на кнопку її текст та колір змінюються до початкового
+стану. Також змінюється і кількість фоловерів. Вона зменшується на 1
+(100,500).
+5. В коді цифра 100,500 має бути прописана одним значенням (100500). В UI -
+виведено через кому (100,500).
 
-In the project directory, you can run:
+Створи свій персональний бекенд для розробки за допомогою UI-сервісу
+mockapi.io.
+Створи ресурс users. Використай конструктор ресурсу та опиши об'єкт юзера, як
+описано вище.
 
-### `npm start`
+Юзер
+1. Створюєте локальну базу даних (окремий файл json) з наступними полями:
+id, user, tweets, followers, avatar (див код нижче).
+2. Зображення аватарів мають бути прописані окремими url у властивості
+“avatar”. Можете підібрати їх самостійно.
+3. Має бути від 30 юзерів з різними даними (на ваш розсуд) в базі. Зроби
+пагінацію. На одній сторінці пагінації має відображатися від 8 до 12 твітів,
+решта підгружатись при натисканні Load More
+4. Відповідно до бази потрібно згенерувати відповідну кількість карток на
+фронт-частині застосунку.
+5. Кожна картка має бути незалежною функціонально одна від одної.
+6. Решта вимог аналогічні до вищеописаного технічного завдання.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+"users": [
+{
+"id": 1,
+"user": "Elon Reeve Musk",
+"tweets": 777,
+"followers": 100500,
+"avatar": "url.jpg"
+}
+]
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Макет:
+https://www.figma.com/file/zun1oP6NmS2Lmgbcj6e1IG/Test?node-id=0%3A1&t=VoiY
+TfiXggVItgVd-1
 
-### `npm test`
+Додаткове завдання
+За виконання вам будуть нараховані додаткові бали! Без виконання додаткового
+завдання ви не зможете отримати максимальний бал.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Створи маршрутизацію, використовуючи React Router.
+У застосунку повинні бути такі маршрути. Якщо користувач зайшов за
+неіснуючим маршрутом, його необхідно перенаправляти на домашню сторінку.
+'/' – компонент Home, домашня сторінка. Стилізація та оформлення на ваш
+розсуд
+'/tweets’ - компонент tweets, сторінка із відображенням твітів
+На сторінці tweets має бути кнопка Back, яка веде на головну сторінку.
 
-### `npm run build`
+Завдання із зірочкою*
+Додай фільтрацію. Це має бути Dropdown із 3 опціями(оформлення на ваш
+розсуд): show all, follow, followings
+show all - показати всі твіти.
+follow - показати твіти, у яких стан follow.
+followings - показати твіти, у яких стан following
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Подальші дії
+1. Роботу заливаєте на github pages або netlify.com.
+2. Виконане тестове завдання надсилайте через форму
+https://forms.gle/pqTovc83TJ5qSFKf9
+3. Очікуйте на фідбек.

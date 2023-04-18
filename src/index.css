@@ -2,7 +2,6 @@ body {
     display: flex;
     font-size: 20px;
     line-height: 24px;
-    justify-content: center;
     font-family: 'Moncerrat', sans-serif;
     background-color: #9385b3;
     padding: 20px;
@@ -11,4 +10,19 @@ body {
     font-style: normal;
     text-transform: uppercase;
     font-weight: 500;
+}
+
+.navLink {
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: 700;
+    color: black;
+}
+
+.navLink.active {
+    color: tomato;
+}
+
+.nav {
+    margin-bottom: 10px;
 }

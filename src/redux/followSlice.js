@@ -1,30 +1,57 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import { fetchFollow, fetchUsers } from './operation'
 
 const followSlice = createSlice({
     name: 'following',
     initialState: {
-        value: 100500,
-        isFollow: false
+        users: [],
+        value: 100,
+        isFollow: false,
+        isLoading: false,
+        error: null
     },
     reducers: {
         follow(state, action) {
-            state.value -= action.payload
+            // state.value -= action.payload
             state.isFollow = false
-
         },
         unFollow(state, action) {
             state.value += action.payload
             state.isFollow = true
+            console.log(action.payload);
         }
+    },
+    extraReducers: {
+        [fetchUsers.pending](state) {
+            state.isLoading = true
+        },
+        [fetchUsers.fulfilled](state, action) {
+            state.isLoading = false
+            state.error = null
+            state.users = action.payload
+
+        },
+        [fetchUsers.rejected](state, action) {
+            state.isLoading = false
+            state.error = action.payload
+        },
+        [fetchFollow.pending](state, action) {
+            state.isLoading = true
+
+        },
+        [fetchFollow.fulfilled](state, action) {
+            state.isLoading = false
+            state.error = null
+            state.items = state.items.find(e => e.id === action.payload.id)
+            console.log(state.users);
+        },
+        [fetchFollow.rejected](state) {
+            state.isLoading = false
+
+        },
     }
 })
 
-const persistConfig = {
-    key: 'following',
-    storage
-}
 
-export const followReducer = persistReducer(persistConfig, followSlice.reducer)
+export const followReducer = followSlice.reducer
 export const { follow, unFollow } = followSlice.actions
