@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import './Tweets.css'
 import { Link } from 'react-router-dom';
 import { Loader } from '../../helpers/Spiner';
-import { fetchUsers } from '../../redux/operation';
+import { fetchFollow, fetchUsers } from '../../redux/operation';
 import { useEffect, useState } from 'react';
 
 export const Tweets = () => {
@@ -29,7 +29,7 @@ export const Tweets = () => {
 
     useEffect(() => {
         dispatch(fetchUsers())
-    }, [dispatch]);
+    }, [dispatch])
 
     return (<div className='box'>
         <Link to='*' className='link'>&#11013; Back</Link>
@@ -44,8 +44,8 @@ export const Tweets = () => {
                         <p className='tweets'>{user.tweets} TWEETS</p>
                         <p className='followers'>{user.followers} FOLOWERS</p>
                         {user.follow ?
-                            <Button className='btnF' /* onClick={dispatch(follow(1))} */>FOLLOWING</Button> :
-                            <Button /* onClick={dispatch(unFollow(1))} */>FOLLOW</Button>
+                            <Button className='btnF' onClick={() => dispatch(fetchFollow(user)) /* dispatch(fetchFollow) */}>FOLLOWING</Button> :
+                            <Button onClick={() => dispatch(fetchFollow(user))} >FOLLOW</Button>
                         }
                     </div>
                 </li>)}
@@ -62,3 +62,6 @@ export const Tweets = () => {
     </div>
     )
 }
+
+
+

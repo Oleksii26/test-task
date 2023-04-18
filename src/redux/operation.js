@@ -18,9 +18,10 @@ export const fetchUsers = createAsyncThunk('users/fetchAll',
 
 export const fetchFollow = createAsyncThunk('users/fetchFollow',
     async (users, thunkAPI) => {
-               console.log(users);
         try {
-            const res = await axios.put(`/users/${users.id}`, { follow: !users.follow },)
+            // fetchUsers()
+            const res = await axios.put(`/users/${users.id}`, { follow: !users.follow })
+            fetchUsers(res)
             return res.data
         } catch (e) {
             return thunkAPI.rejectWithValue(e.message)

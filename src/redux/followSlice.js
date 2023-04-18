@@ -42,12 +42,10 @@ const followSlice = createSlice({
         [fetchFollow.fulfilled](state, action) {
             state.isLoading = false
             state.error = null
-            state.items = state.items.find(e => e.id === action.payload.id)
-            console.log(state.users);
         },
-        [fetchFollow.rejected](state) {
+        [fetchFollow.rejected](state, action) {
             state.isLoading = false
-
+            // state.error = action.payload
         },
     }
 })
