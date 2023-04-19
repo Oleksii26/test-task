@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Loader } from '../../helpers/Spiner';
 import { fetchFollow, fetchUsers } from '../../redux/operation';
 import { useEffect, useState } from 'react';
+import { Paginations } from '../Paginations/Paginations';
 
 export const Tweets = () => {
 
@@ -12,10 +13,10 @@ export const Tweets = () => {
     const [usersPurPages] = useState(9)
     const users = useSelector(state => state.follow.users)
 
-    const pageNumbers = []
-    for (let i = 1; i <= Math.ceil(users.length / usersPurPages); i++) {
-        pageNumbers.push(i)
-    }
+    // const pageNumbers = []
+    // for (let i = 1; i <= Math.ceil(users.length / usersPurPages); i++) {
+    //     pageNumbers.push(i)
+    // }
 
     const dispatch = useDispatch()
     const isLoading = useSelector(state => state.follow.isLoading)
@@ -32,13 +33,12 @@ export const Tweets = () => {
     }, [dispatch])
 
 
-
     return (<div className='box'>
-        <Link to='*' className='link'>&#11013; Back</Link>
+        <Link to='/' className='link'>&#11013; Back</Link>
         <div className='container'>
 
             {isLoading && <Loader />}
-            {users && <ul className='list'>
+            {currentUsers && <ul className='list'>
                 {currentUsers.map((user, i) => <li key={user.id}>
                     <div className='card'>
                         <img className='img' alt='img' src={user.avatar} />
@@ -46,21 +46,14 @@ export const Tweets = () => {
                         <p className='tweets'>{user.tweets} TWEETS</p>
                         <p className='followers'>{user.followers} FOLLOWERS</p>
                         {user.follow ?
-                            <Button  className='btnF'  onClick={() => dispatch(fetchFollow(user))}>FOLLOWING</Button> :
-                            <Button  onClick={() => dispatch(fetchFollow(user))} >FOLLOW</Button>
+                            <Button className='btnF' onClick={() => dispatch(fetchFollow(user))}>FOLLOWING</Button> :
+                            <Button onClick={() => dispatch(fetchFollow(user))} >FOLLOW</Button>
                         }
                     </div>
                 </li>)}
             </ul>}
         </div>
-        <ul className='listPagination'>
-            {
-                pageNumbers.map(number => <li className='itemPagination' key={number}>
-                    <span className='linkPagination' href='!#' onClick={() => paginate(number)}>{number}</span>
-                </li>)
-            }
-        </ul>
-
+        <Paginations usersPurPages={usersPurPages} users={users} paginate={paginate} />
     </div>
     )
 }

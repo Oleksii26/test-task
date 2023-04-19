@@ -30,14 +30,15 @@ const followSlice = createSlice({
             state.isLoading = false
             state.error = null
             const following = state.users.find(e => e.id === action.payload.id)
-            following.follow = !following.follow
-            following.follow ? (following.followers = Number(following.followers) + 1) :
-                (following.followers = Number(following.followers) - 1)
-        }
+            following.follow = action.payload.follow
+            following.followers = action.payload.followers
+        },
+        [fetchFollow.rejected](state, action) {
+            state.isLoading = false
+            state.error = action.payload
 
+        },
     }
 })
-
-
 export const followReducer = followSlice.reducer
 export const { follow, unFollow } = followSlice.actions

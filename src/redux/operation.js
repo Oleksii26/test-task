@@ -16,8 +16,9 @@ export const fetchUsers = createAsyncThunk('users/fetchAll',
 )
 export const fetchFollow = createAsyncThunk('users/fetchFollow',
     async (users, thunkAPI) => {
+        
         try {
-            const res = await axios.put(`/users/${users.id}`, { follow: users.follow, followers: users.followers })
+            const res = await axios.put(`/users/${users.id}`, { follow: !users.follow, followers: (users.follow ? (Number(users.followers) - 1):(Number(users.followers) + 1) )  })
             return res.data
         } catch (e) {
             return thunkAPI.rejectWithValue(e.message)
