@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchFollow, fetchUsers, fetchUnFollow } from './operation'
+import { fetchFollow, fetchUsers } from './operation'
 
 const followSlice = createSlice({
     name: 'following',
@@ -29,24 +29,12 @@ const followSlice = createSlice({
         [fetchFollow.fulfilled](state, action) {
             state.isLoading = false
             state.error = null
-        },
-        [fetchFollow.rejected](state, action) {
-            state.isLoading = false
-            state.error = action.payload
-            state.users = false
-        },
-        [fetchUnFollow.pending](state, action) {
-            state.isLoading = true
+            const following = state.users.find(e => e.id === action.payload.id)
+            following.follow = !following.follow
+            following.follow ? (following.followers = Number(following.followers) + 1) :
+                (following.followers = Number(following.followers) - 1)
+        }
 
-        },
-        [fetchUnFollow.fulfilled](state, action) {
-            state.isLoading = false
-            state.error = null
-        },
-        [fetchUnFollow.rejected](state, action) {
-            state.isLoading = false
-            state.error = action.payload
-        },
     }
 })
 

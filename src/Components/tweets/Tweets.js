@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import './Tweets.css'
 import { Link } from 'react-router-dom';
 import { Loader } from '../../helpers/Spiner';
-import { fetchFollow, fetchUnFollow, fetchUsers } from '../../redux/operation';
+import { fetchFollow, fetchUsers } from '../../redux/operation';
 import { useEffect, useState } from 'react';
 
 export const Tweets = () => {
@@ -47,7 +47,7 @@ export const Tweets = () => {
                         <p className='followers'>{user.followers} FOLLOWERS</p>
                         {user.follow ?
                             <Button  className='btnF'  onClick={() => dispatch(fetchFollow(user))}>FOLLOWING</Button> :
-                            <Button  onClick={() => dispatch(fetchUnFollow(user))} >FOLLOW</Button>
+                            <Button  onClick={() => dispatch(fetchFollow(user))} >FOLLOW</Button>
                         }
                     </div>
                 </li>)}

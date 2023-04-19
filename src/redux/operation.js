@@ -17,19 +17,11 @@ export const fetchUsers = createAsyncThunk('users/fetchAll',
 export const fetchFollow = createAsyncThunk('users/fetchFollow',
     async (users, thunkAPI) => {
         try {
-            const res = await axios.put(`/users/${users.id}`, { follow: false, followers: Number(users.followers) - 1 })
+            const res = await axios.put(`/users/${users.id}`, { follow: users.follow, followers: users.followers })
             return res.data
         } catch (e) {
             return thunkAPI.rejectWithValue(e.message)
         }
     })
-export const fetchUnFollow = createAsyncThunk('users/fetchUnFollow',
-    async (users, thunkAPI) => {
-        try {
-            const res = await axios.put(`/users/${users.id}`, { follow: true, followers: Number(users.followers) + 1 })
-            return res.data
-        } catch (e) {
-            return thunkAPI.rejectWithValue(e.message)
-        }
-    })
+
 
