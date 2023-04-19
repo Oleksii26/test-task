@@ -13,7 +13,7 @@ function App() {
         <NavLink className='navLink' to='/tweets'>Tweets</NavLink>
       </nav>
       <Routes>
-        <Route index element={<Home />} />
+        <Route path='/' element={<Home />} />
         <Route path='/tweets' element={<Tweets />} />
         <Route path='*' element={<Home />} />
       </Routes>

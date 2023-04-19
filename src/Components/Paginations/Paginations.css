@@ -1,0 +1,28 @@
+.listPagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+padding: 0;
+}
+
+.linkPagination {
+    text-decoration: none;
+    color: white;
+    padding: 8px 14px;
+}
+
+.itemPagination {
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #471CA9;
+    cursor: pointer;
+}
+
+.linkPagination:hover {
+    background-color: tomato;
+}
+

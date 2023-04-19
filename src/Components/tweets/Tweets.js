@@ -13,11 +13,6 @@ export const Tweets = () => {
     const [usersPurPages] = useState(9)
     const users = useSelector(state => state.follow.users)
 
-    // const pageNumbers = []
-    // for (let i = 1; i <= Math.ceil(users.length / usersPurPages); i++) {
-    //     pageNumbers.push(i)
-    // }
-
     const dispatch = useDispatch()
     const isLoading = useSelector(state => state.follow.isLoading)
 

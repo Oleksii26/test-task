@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom'
+import './Paginations.css'
+
 
 export const Paginations = ({usersPurPages, users, paginate}) => {
     
@@ -10,7 +13,7 @@ export const Paginations = ({usersPurPages, users, paginate}) => {
         <ul className='listPagination'>
             {
                 pageNumbers.map(number => <li className='itemPagination' key={number}>
-                    <span className='linkPagination' href='!#' onClick={() => paginate(number)}>{number}</span>
+                    <Link className='linkPagination' onClick={() => paginate(number)}>{number}</Link>
                 </li>)
             }
         </ul>
